@@ -26,7 +26,6 @@ export const routes: Routes = [
               import(
                 './views/pages/mantenimientos/usuarios/usuarios.component'
               ).then((c) => c.UsuariosComponent),
-            canActivate: [adminGuard],
             data: {
               title: 'Mantenimiento de Usuarios',
             },
@@ -37,6 +36,7 @@ export const routes: Routes = [
               import(
                 './views/pages/mantenimientos/empleados/empleados.component'
               ).then((c) => c.EmpleadosComponent),
+            canActivate: [adminGuard],
             data: {
               title: 'Mantenimiento de Empleados',
             },
