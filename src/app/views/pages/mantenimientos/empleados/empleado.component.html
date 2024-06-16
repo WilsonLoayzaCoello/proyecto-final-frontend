@@ -1,0 +1,89 @@
+<div class="row">
+  <div class="col-md-6">
+    <div class="card">
+      <div class="card-body">
+        <h4 class="card-title">Empleado</h4>
+        <h6 class="card-subtitle">Actualizar información</h6>
+        <form
+          class="form-horizontal p-t-20 mt-4"
+          [formGroup]="empleadoForm"
+          (submit)="guardarEmpleado()"
+        >
+          <div class="form-group row">
+            <c-input-group class="mb-3" *ngIf="empleadoSeleccionado">
+              <label for="exampleInputEmail3" class="col-sm-3 control-label"
+                >Imagen</label
+              >
+
+              <img
+                [src]="empleadoSeleccionado.img! | imagen : 'empleados'"
+                alt=""
+                class="w200 cursor"
+              />
+            </c-input-group>
+            <c-input-group class="mb-3">
+              <label for="exampleInputEmail3" class="col-sm-3 control-label"
+                >Nombre</label
+              >
+              <span cInputGroupText id="basic-addon1">
+                <svg [cIcon]="icons.cilUser" size="md" title="User Icon"></svg>
+              </span>
+              <input
+                class="form-control"
+                formControlName="nombre"
+                aria-describedby="basic-addon1"
+                aria-label="Nombre"
+                cFormControl
+                placeholder="Nombre del empleado"
+              />
+            </c-input-group>
+          </div>
+          <div class="form-group row">
+            <c-input-group class="mb-3">
+              <label for="exampleInputEmail3" class="col-sm-3 control-label"
+                >Tienda</label
+              >
+
+              <select
+                aria-label="Default select example"
+                cSelect
+                class="mb-3 form-control"
+                formControlName="tienda"
+              >
+                <option value="">Seleccione una tienda</option>
+                <option *ngFor="let tienda of tiendas" [value]="tienda._id">
+                  {{ tienda.nombre }}
+                </option>
+              </select>
+            </c-input-group>
+          </div>
+
+          <div class="form-group row mb-3 mt-3">
+            <div class="offset-sm-3 col-sm-9">
+              <button
+                type="submit"
+                [disabled]="empleadoForm.invalid"
+                class="btn btn-success waves-effect waves-light"
+              >
+                Guardar
+              </button>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+  <div class="col animated fadeIn fast" *ngIf="tiendaSeleccionada">
+    <div class="card">
+      <div class="card-body">
+        <h4 class="card-title">Tienda</h4>
+        <h6 class="card-subtitle">{{ tiendaSeleccionada.nombre }}</h6>
+        <img
+          [src]="tiendaSeleccionada.img! | imagen : 'tiendas'"
+          alt=""
+          class="img-thumbnail cursor mt-4"
+        />
+      </div>
+    </div>
+  </div>
+</div>

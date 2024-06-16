@@ -1,0 +1,129 @@
+<div class="row animated fadeIn">
+  <div class="col-4">
+    <div class="card">
+      <div class="card-body">
+        <h4 class="card-title">Usuarios</h4>
+        <c-alert
+          *ngIf="usuarios.length === 0"
+          color="danger"
+          class="animated fadeIn"
+          >No hay usuarios con ese término</c-alert
+        >
+
+        <div
+          class="table-responsive"
+          *ngIf="usuarios.length > 0"
+          class="animated fadeIn"
+        >
+          <table bordered cTable class="mt-3">
+            <thead>
+              <tr class="text-center">
+                <th>Avatar</th>
+                <th>Nombre</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let usuario of usuarios" class="animated fadeIn">
+                <td class="text-center align-middle">
+                  <img
+                    [src]="usuario.img! | imagen : 'usuarios'"
+                    alt=""
+                    class="w75"
+                  />
+                </td>
+                <td class="text-center align-middle">{{ usuario.nombre }}</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="col-4">
+    <div class="card">
+      <div class="card-body">
+        <h4 class="card-title">Empleados</h4>
+        <c-alert
+          *ngIf="empleados.length === 0"
+          color="danger"
+          class="animated fadeIn"
+          >No hay empleados con ese término</c-alert
+        >
+
+        <div
+          class="table-responsive"
+          *ngIf="empleados.length > 0"
+          class="animated fadeIn"
+        >
+          <table bordered cTable class="mt-3">
+            <thead>
+              <tr class="text-center">
+                <th>Avatar</th>
+                <th>Nombre</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let empleado of empleados" class="animated fadeIn">
+                <td class="text-center align-middle">
+                  <img
+                    [src]="empleado.img! | imagen : 'empleados'"
+                    alt=""
+                    class="w75"
+                  />
+                </td>
+                <td class="text-center align-middle">
+                  <a
+                    class="text-dark-emphasis"
+                    style="text-decoration: none; font-size: 1.2em"
+                    [routerLink]="['/mantenimientos/empleado', empleado._id]"
+                    >{{ empleado.nombre }}</a
+                  >
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="col-4">
+    <div class="card">
+      <div class="card-body">
+        <h4 class="card-title">Tiendas</h4>
+        <c-alert
+          *ngIf="tiendas.length === 0"
+          color="danger"
+          class="animated fadeIn"
+          >No hay tiendas con ese término</c-alert
+        >
+
+        <div
+          class="table-responsive"
+          *ngIf="tiendas.length > 0"
+          class="animated fadeIn"
+        >
+          <table bordered cTable class="mt-3">
+            <thead>
+              <tr class="text-center">
+                <th>Foto</th>
+                <th>Nombre</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let tienda of tiendas" class="animated fadeIn">
+                <td class="text-center align-middle">
+                  <img
+                    [src]="tienda.img! | imagen : 'tiendas'"
+                    alt=""
+                    class="w75"
+                  />
+                </td>
+                <td class="text-center align-middle">{{ tienda.nombre }}</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

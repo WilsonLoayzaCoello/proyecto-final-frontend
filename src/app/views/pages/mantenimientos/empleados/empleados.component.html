@@ -1,0 +1,112 @@
+<div class="row animated fadeIn fast">
+  <div class="col-12">
+    <div class="card">
+      <div class="card-body">
+        <input
+          type="text"
+          class="form-control"
+          placeholder="Buscar empleado..."
+          (keyup)="buscar(txtBuscar.value)"
+          #txtBuscar
+        />
+      </div>
+    </div>
+  </div>
+</div>
+&nbsp;
+<div class="row animated fadeIn fast" *ngIf="cargando">
+  <div class="col-12">
+    <div class="alert alert-info text-center">
+      <h4 class="alert-heading">Cargando</h4>
+      <i class="fa fa-spin ti-reload fa-2x"></i>
+      <p class="mb-0">Por favor espere</p>
+    </div>
+  </div>
+</div>
+
+<div class="row" *ngIf="!cargando">
+  <div class="col-12">
+    <div class="card">
+      <div class="card-body">
+        <div class="row">
+          <div class="col-8">
+            <h4 class="card-title">Empleados ({{ empleados.length }})</h4>
+            <h6 class="card-subtitle">Empleados registradas en el sistema</h6>
+          </div>
+          <div class="col">
+            <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+              <button
+                class="btn btn-primary"
+                routerLink="/mantenimientos/empleado/nuevo"
+              >
+                <svg [cIcon]="icons.cilCart" size="md" title="List Icon"></svg>
+                Crear empleado
+              </button>
+            </div>
+          </div>
+        </div>
+        <div class="table-responsive">
+          <table bordered cTable class="mt-3">
+            <thead>
+              <tr class="text-center">
+                <th class="w100">Imagen</th>
+                <th>Nombre</th>
+                <th class="text-nowrap w100">Action</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let empleado of empleados">
+                <td class="text-center">
+                  <img
+                    class="avatar cursor"
+                    [src]="empleado.img! | imagen : 'empleados'"
+                    [width]="40"
+                    [height]="40"
+                    alt="Avatar de usuario"
+                    (click)="abrirModal(empleado)"
+                  />
+                </td>
+
+                <td class="align-middle">{{ empleado.nombre }}</td>
+
+                <td class="text-nowrap text-center align-middle">
+                  <a
+                    [routerLink]="['/mantenimientos/empleado', empleado._id]"
+                    data-toggle="tooltip"
+                    data-original-title="Editar"
+                    class="cursor-pointer"
+                  >
+                    <svg
+                      [cIcon]="icons.cilPencil"
+                      size="xl"
+                      title="List Icon"
+                    ></svg>
+                  </a>
+                  &nbsp;
+
+                  <a
+                    (click)="eliminarEmpleado(empleado)"
+                    data-toggle="tooltip"
+                    data-original-title="Eliminar"
+                    class="cursor-pointer"
+                  >
+                    <svg [cIcon]="icons.cilX" size="xl" title="List Icon"></svg>
+                  </a>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <!-- <div *ngIf="txtBuscar.value.length === 0">
+          <button (click)="cambiarPagina(-5)" class="btn btn-secondary">
+            Anteriores
+          </button>
+          &nbsp;
+          <button (click)="cambiarPagina(5)" class="btn btn-secondary">
+            Siguientes
+          </button>
+        </div> -->
+      </div>
+    </div>
+  </div>
+</div>

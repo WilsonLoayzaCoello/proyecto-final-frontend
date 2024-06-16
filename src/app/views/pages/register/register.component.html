@@ -1,0 +1,77 @@
+<div
+  class="bg-light dark:bg-transparent min-vh-100 d-flex flex-row align-items-center"
+>
+  <c-container>
+    <c-row class="justify-content-center">
+      <c-col lg="7" md="9" xl="6">
+        <c-card class="mx-4">
+          <c-card-body class="p-4">
+            <form
+              id="loginform"
+              cForm
+              [formGroup]="registerForm"
+              (ngSubmit)="crearUsuario()"
+            >
+              <h1>Registrarse</h1>
+              <p class="text-body-secondary">Crea tu cuenta</p>
+              <c-input-group class="mb-3 form-group">
+                <span cInputGroupText>
+                  <svg cIcon name="cilUser"></svg>
+                </span>
+                <input
+                  autoComplete="name"
+                  cFormControl
+                  placeholder="Usuario"
+                  formControlName="nombre"
+                />
+              </c-input-group>
+              <c-input-group class="mb-3 form-group">
+                <span cInputGroupText>&#64;</span>
+                <input
+                  autoComplete="email"
+                  cFormControl
+                  placeholder="Email"
+                  formControlName="email"
+                />
+              </c-input-group>
+              <c-input-group class="mb-3 form-group">
+                <span cInputGroupText>
+                  <svg cIcon name="cilLockLocked"></svg>
+                </span>
+                <input
+                  autoComplete="new-password"
+                  cFormControl
+                  placeholder="Contraseña"
+                  type="password"
+                  formControlName="password"
+                />
+              </c-input-group>
+              <c-input-group class="mb-4 form-group">
+                <span cInputGroupText>
+                  <svg cIcon name="cilLockLocked"></svg>
+                </span>
+                <input
+                  autoComplete="new-password"
+                  cFormControl
+                  placeholder="Repetir contraseña"
+                  type="password"
+                  formControlName="password2"
+                />
+              </c-input-group>
+              <div class="d-grid">
+                <button cButton color="primary" type="submit">
+                  Crear cuenta
+                </button>
+              </div>
+              <div class="d-grid">
+                <a class="text-center mt-2 text-decoration" routerLink="/login">
+                  ¿Ya tienes una cuenta? Inicia sesión
+                </a>
+              </div>
+            </form>
+          </c-card-body>
+        </c-card>
+      </c-col>
+    </c-row>
+  </c-container>
+</div>

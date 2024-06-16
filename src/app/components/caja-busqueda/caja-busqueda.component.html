@@ -1,0 +1,24 @@
+<div class="search-container" [class.active]="isSearchActive">
+  <button (click)="toggleSearch()" class="search-button">
+    <svg
+      *ngIf="!isSearchActive"
+      class="my-1"
+      [cIcon]="icons.cilSearch"
+      size="lg"
+    ></svg>
+    <svg
+      *ngIf="isSearchActive"
+      class="my-1"
+      [cIcon]="icons.cilX"
+      size="lg"
+    ></svg>
+  </button>
+  <form *ngIf="isSearchActive" (submit)="buscar(txtTermino.value)">
+    <input
+      type="text"
+      class="search-input"
+      placeholder="Buscar..."
+      #txtTermino
+    />
+  </form>
+</div>
